@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export type UserDocument = User & Document;
+export type UserDocument = HydratedDocument<User>;
 
 @Schema()
 export class User {
@@ -33,6 +33,14 @@ export class User {
     example: '123456@163.com',
   })
   email: string;
+}
+
+export class Id extends User {
+  @ApiProperty({
+    description: 'Id',
+    example: '',
+  })
+  _id: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
