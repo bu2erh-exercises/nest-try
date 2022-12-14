@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cat {
+  _id: ID!
+  cat_name: String!
+}
+
+type CatResponse {
+  total: Int!
+  data: [Cat!]!
+}
+
+type Query {
+  cats: CatResponse!
+  cat(id: ID!): Cat!
+}
+
+type Mutation {
+  createCat(createCatInput: CreateCatInput!): Cat!
+  updateCat(updateCatInput: UpdateCatInput!): Cat!
+  removeCat(id: ID!): Cat!
+}
+
+input CreateCatInput {
+  cat_name: String!
+}
+
+input UpdateCatInput {
+  cat_name: String
+  id: ID!
+}
